@@ -208,10 +208,10 @@ public class SequenceFileFormat implements PailFormat {
 
         // In certain versions of hadoop this method is the one that is called by CombineFileRecordReader. But the
         // method is incompatible with the one that is in the hadoop version that dfs-datastore uses
-//      @Override
-//      protected List<FileStatus> listStatus(org.apache.hadoop.mapreduce.JobContext job) throws IOException {
-//          return internalListStatus(new JobConf(job.getConfiguration()));
-//      }
+      @Override
+      protected List<FileStatus> listStatus(org.apache.hadoop.mapreduce.JobContext job) throws IOException {
+          return internalListStatus(new JobConf(job.getConfiguration()));
+      }
 
         @Override
         protected FileStatus[] listStatus(JobConf conf) throws IOException {
