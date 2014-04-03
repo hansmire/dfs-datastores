@@ -10,7 +10,7 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.BytesWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.*;
-import org.apache.hadoop.mapred.lib.CombineFileInputFormat;
+import com.backtype.hadoop.mapred.lib.CombineFileInputFormat;
 
 import java.util.ArrayList;
 import java.util.List;

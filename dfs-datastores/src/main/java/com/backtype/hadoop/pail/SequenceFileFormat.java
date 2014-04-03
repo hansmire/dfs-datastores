@@ -19,7 +19,7 @@ import org.apache.hadoop.io.compress.CompressionCodec;
 import org.apache.hadoop.io.compress.DefaultCodec;
 import org.apache.hadoop.io.compress.GzipCodec;
 import org.apache.hadoop.mapred.*;
-import org.apache.hadoop.mapred.lib.CombineFileInputFormat;
+import com.backtype.hadoop.mapred.lib.CombineFileInputFormat;
 import org.apache.hadoop.mapred.lib.CombineFileRecordReader;
 import org.apache.hadoop.mapred.lib.CombineFileSplit;
 import org.slf4j.Logger;
@@ -205,13 +205,6 @@ public class SequenceFileFormat implements PailFormat {
             return new CombineFileRecordReader(jobConf, (CombineFileSplit) inputSplit, reporter, (Class) SequenceFilePailRecordReader.class);
         }
 
-
-        // In certain versions of hadoop this method is the one that is called by CombineFileRecordReader. But the
-        // method is incompatible with the one that is in the hadoop version that dfs-datastore uses
-      @Override
-      protected List<FileStatus> listStatus(org.apache.hadoop.mapreduce.JobContext job) throws IOException {
-          return internalListStatus(new JobConf(job.getConfiguration()));
-      }
 
         @Override
         protected FileStatus[] listStatus(JobConf conf) throws IOException {
